@@ -1,0 +1,34 @@
+from setuptools import setup
+
+PACKAGE_NAME = "mmgmail"
+
+with open("README.md") as f:
+    readme = f.read()
+
+with open("VERSION") as f:
+    version = f.read()
+
+setup(
+    # matadata
+    name=PACKAGE_NAME,
+    version=version,
+    description="Magarimame's GMail Operation Library",
+    long_description=readme,
+    author="Yutaka Kato",
+    author_email="kato.yutaka@gmail.com",
+    url="https://github.com/yukkun007/mmgmail",
+    # liscence=
+    # platform=
+    # options
+    packages=[PACKAGE_NAME],
+    include_package_data=True,
+    zip_safe=False,
+    python_requires=">=3.6",
+    install_requires=["google-api-python-client", "google-auth-oauthlib", "python-dotenv"],
+    entry_points="""
+        [console_scripts]
+        {app} = {app}.cli:main
+    """.format(
+        app=PACKAGE_NAME
+    ),
+)

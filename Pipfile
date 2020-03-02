@@ -1,0 +1,31 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+python-dotenv = "==0.10.5"
+google-api-python-client = "==1.7.11"
+google-auth-oauthlib = "==0.4.1"
+
+[dev-packages]
+flake8 = "==3.7.9"
+mypy = "==0.761"
+pytest = "==5.3.5"
+black = "==19.10b0"
+pytest-cov = "==2.8.1"
+coverage = "==5.0.3"
+sphinx = "*"
+
+[requires]
+python_version = "3.6"
+
+[scripts]
+v = "python --version"
+start = "mmgmail"
+ut = "py.test -v --capture=no --cov-config .coveragerc --cov=mmgmail --cov-report=xml --cov-report term-missing ."
+utsp = "py.test -v --capture=no --cov-config .coveragerc --cov=mmgmail --cov-report=xml --cov-report term-missing -k get_message ."
+ut_fast = "py.test -v --capture=no --cov-config .coveragerc --cov=mmgmail --cov-report=xml --cov-report term-missing -m 'not slow' ."
+lint = "flake8 --max-line-length=100 --ignore=E203,W503 ./mmgmail"
+doc = "./doc.sh"
+envenc = "travis encrypt-file .env"
